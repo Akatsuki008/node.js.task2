@@ -27,6 +27,7 @@ const server = http.createServer((req, res)=>{
             break;
         default:
             path += "404.html";
+            res.statusCode = 404;
             break;
     }
 fs.readFile('./node_modules/sp4/node.js.task2/view/server', (err, data) => {
