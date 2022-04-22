@@ -9,20 +9,27 @@ const server = http.createServer((req, res)=>{
     res.write("<p>Hello guys</p>");
     res.write("<p>Hello guys, bye bye</p>");*/
     //send html file
-    let path = "./views";
+    let path = "./view";
     switch(req.url)
     {
         case '/':
             path+= 'server.html';
+            res.statusCode = 200;
             break;
         case '/about':
-            path+= 'sabout.html';
+            path+= 'about.html';
+            res.statusCode = 200;
+            break;
+        case '/about-me':
+            res.statusCode = 301;
+            res.setHeader('Location', '/about');
+            res.end();
             break;
         default:
             path += "404.html";
             break;
     }
-fs.readFile('./views/server.html', (err, data) => {
+fs.readFile('./node_modules/sp4/node.js.task2/view/server', (err, data) => {
       if (err) {
     console.log(err);
     res.end();
